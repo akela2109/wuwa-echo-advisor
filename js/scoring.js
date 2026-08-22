@@ -1,4 +1,4 @@
-// Движок оценки билда эхо. Чистые функции, без DOM — тестируется под Node.
+// Echo build scoring engine. Pure functions, no DOM — testable under Node.
 (function (global) {
   "use strict";
 
@@ -25,11 +25,11 @@
 
   function isMainStatOk(echo, character) {
     var options = character.mainStats[echo.cost];
-    if (!options) return true; // кост без ограничений (напр. кост 1 всегда фиксирован извне)
+    if (!options) return true; // no constraint at this cost (e.g. cost 1 is always fixed externally)
     return options.indexOf(echo.mainStat) !== -1;
   }
 
-  // Возвращает { score, mainStatOk, substatBreakdown }
+  // Returns { score, mainStatOk, substatBreakdown }
   function scoreEcho(echo, character) {
     var maxRoll = global.WUWA_CONSTANTS ? global.WUWA_CONSTANTS.MAX_SUBSTAT_ROLL : require("../data/wuwa-stat-constants.js").MAX_SUBSTAT_ROLL;
     var actualWeighted = 0;
@@ -69,7 +69,7 @@
     return "C";
   }
 
-  // Возвращает { echoScores, overall, rank, setMatches }
+  // Returns { echoScores, overall, rank, setMatches }
   function scoreBuild(build, character) {
     var echoScores = build.echoes.map(function (echo) {
       return scoreEcho(echo, character);

@@ -1,4 +1,4 @@
-// Экран #roster: фильтры (стихия/оружие) + сетка персонажей + чекбокс "есть у меня".
+// #roster screen: element/weapon filters + character grid + "I own this" checkbox.
 (function (global) {
   "use strict";
 
@@ -19,7 +19,7 @@
     filterBar.className = "filter-bar";
 
     var elementSelect = document.createElement("select");
-    elementSelect.appendChild(new Option("Все стихии", ""));
+    elementSelect.appendChild(new Option("All Elements", ""));
     uniqueValues(characters, "element").forEach(function (el) { elementSelect.appendChild(new Option(el, el)); });
     elementSelect.addEventListener("change", function () {
       filters.element = elementSelect.value;
@@ -27,7 +27,7 @@
     });
 
     var weaponSelect = document.createElement("select");
-    weaponSelect.appendChild(new Option("Всё оружие", ""));
+    weaponSelect.appendChild(new Option("All Weapons", ""));
     uniqueValues(characters, "weapon").forEach(function (w) { weaponSelect.appendChild(new Option(w, w)); });
     weaponSelect.addEventListener("change", function () {
       filters.weapon = weaponSelect.value;
@@ -63,7 +63,7 @@
         global.STORAGE.setOwned(storageImpl, c.id, checkbox.checked);
       });
       label.appendChild(checkbox);
-      label.appendChild(document.createTextNode(" есть у меня"));
+      label.appendChild(document.createTextNode(" I own this"));
 
       card.appendChild(name);
       card.appendChild(meta);

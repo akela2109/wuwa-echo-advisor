@@ -1,5 +1,6 @@
-// Персистентность ростера и билдов. storage-реализация передаётся аргументом
-// (в браузере — window.localStorage), это и делает модуль тестируемым под Node.
+// Roster/build persistence. The storage implementation is passed in as an argument
+// (in the browser it's window.localStorage) — this is what makes the module
+// testable under Node.
 (function (global) {
   "use strict";
 

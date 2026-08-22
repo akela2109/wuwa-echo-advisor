@@ -1,4 +1,4 @@
-// Точка входа: подключает роутер к трём экранам.
+// Entry point: wires the router up to the three screens.
 (function (global) {
   "use strict";
 

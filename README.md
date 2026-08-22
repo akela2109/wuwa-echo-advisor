@@ -1,18 +1,17 @@
 # WuWa Echo Advisor
 
-## Описание
-Статический сайт для оценки билдов эхо персонажей Wuthering Waves. Рекомендации по
-приоритету статов и сетам эхо взяты с prydwen.gg. Пользователь отмечает своих
-персонажей, вводит билд (5 эхо: кост, гл.стат, 4 саб-стата, сет) и получает
-численную оценку билда (по каждому эхо + общий скор/ранг) с конкретными
-подсказками, что улучшить.
+## Description
+A static site for scoring Wuthering Waves echo builds. Substat priority and Sonata
+Effect recommendations are sourced from prydwen.gg. Mark the characters you own,
+enter your build (5 echoes: cost, main stat, 4 substats, Sonata Effect), and get a
+numeric build score with concrete suggestions on what to improve.
 
-## Возможности
-- Ростер персонажей WuWa с отметкой «есть у меня» (сохраняется в браузере)
-- Страница персонажа: рекомендуемые гл.статы, приоритет саб-статов, рекомендуемый сет эхо
-- Форма ввода билда (5 эхо) и оценка: скор по каждому эхо + общий скор/ранг (S/A/B/C)
-- Детальный разбор по клику на эхо: что верно, что стоит перекатать
-- Билд и ростер сохраняются локально (localStorage), ничего не отправляется на сервер
+## Features
+- WuWa character roster with an "I own this" toggle (saved in the browser)
+- Character page: recommended main stats, substat priority, recommended Sonata Effect
+- Build input form (5 echoes) and scoring: per-echo score + overall score/rank (S/A/B/C)
+- Detailed breakdown on click: what's right, what's worth re-rolling
+- Build and roster are saved locally (localStorage), nothing is sent to a server
 
-## Источник данных
-prydwen.gg (Wuthering Waves character build guides). Обновляется вручную/по расписанию.
+## Data Source
+prydwen.gg (Wuthering Waves character build guides). Updated manually / on a schedule.

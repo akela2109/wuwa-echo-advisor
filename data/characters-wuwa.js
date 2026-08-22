@@ -1,5 +1,5 @@
-// Рекомендации по билдам. Источник: prydwen.gg (Wuthering Waves character guides).
-// Обновить: попросить Claude перескрейпить страницы персонажей через WebFetch.
+// Build recommendations. Source: prydwen.gg (Wuthering Waves character guides).
+// To update: ask Claude to re-scrape the character pages via WebFetch.
 (function (global) {
   "use strict";
 
@@ -13,7 +13,7 @@
       substatPriority: ["energyRegen", "critRate", "critDmg", "atkPct", "resonanceSkillDmg", "atkFlat"],
       mainStats: { 4: ["critRate", "critDmg"], 3: ["elementalDmg", "atkPct"], 1: ["atkFlat"] },
       recommendedSets: [{ "Celestial Light": 5 }],
-      summary: "Энергорегенерация до отметки команды, затем крит-статы; сет Celestial Light 5pc (Spectro DMG).",
+      summary: "Energy Regen until Outro threshold, then crit stats; Celestial Light 5pc (Spectro DMG) Sonata Effect.",
       source: "https://www.prydwen.gg/wuthering-waves/characters/jinhsi"
     },
     {
@@ -25,7 +25,7 @@
       substatPriority: ["energyRegen", "critRate", "critDmg", "atkPct", "atkFlat", "resonanceLiberationDmg"],
       mainStats: { 4: ["critRate", "critDmg"], 3: ["elementalDmg", "atkPct"], 1: ["atkFlat"] },
       recommendedSets: [{ "Void Thunder": 5 }],
-      summary: "Энергорегенерация до отметки, затем крит-статы; сет Void Thunder 5pc (Electro DMG). Технически сложный, инконсистентный ДПС.",
+      summary: "Energy Regen until threshold, then crit stats; Void Thunder 5pc (Electro DMG) Sonata Effect. Technically demanding, inconsistent DPS.",
       source: "https://www.prydwen.gg/wuthering-waves/characters/calcharo"
     },
     {
@@ -37,7 +37,7 @@
       substatPriority: ["energyRegen", "critRate", "critDmg", "atkPct", "atkFlat"],
       mainStats: { 4: ["critRate", "atkPct"], 3: ["energyRegen", "elementalDmg"], 1: ["atkFlat"] },
       recommendedSets: [{ "Rejuvenating Glow": 5 }],
-      summary: "Универсальный саппорт/хилер с самой короткой ротацией: энергорегенерация до ~220-230%, затем крит-статы; сет Rejuvenating Glow 5pc.",
+      summary: "Versatile healer/support with the shortest rotation: Energy Regen to ~220-230%, then crit stats; Rejuvenating Glow 5pc Sonata Effect.",
       source: "https://www.prydwen.gg/wuthering-waves/characters/verina"
     }
   ];

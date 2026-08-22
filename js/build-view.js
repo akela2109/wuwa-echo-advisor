@@ -1,4 +1,4 @@
-// Экран #build/:id: 5 карточек-слотов эхо, оценка, детальный разбор.
+// #build/:id screen: 5 echo slot cards, scoring, detailed breakdown.
 (function (global) {
   "use strict";
 
@@ -32,7 +32,7 @@
 
     var header = document.createElement("div");
     header.className = "echo-slot__header";
-    header.innerHTML = "<b>Эхо " + (index + 1) + "</b><span>кост " + echo.cost + "</span>";
+    header.innerHTML = "<b>Echo " + (index + 1) + "</b><span>cost " + echo.cost + "</span>";
     slot.appendChild(header);
 
     var body = document.createElement("div");
@@ -43,7 +43,7 @@
     });
 
     var mainStatSelect = document.createElement("select");
-    mainStatSelect.appendChild(buildOption("", "Гл.стат…"));
+    mainStatSelect.appendChild(buildOption("", "Main Stat…"));
     (global.WUWA_CONSTANTS.COST_TO_MAIN_STAT_OPTIONS[echo.cost] || []).forEach(function (s) {
       mainStatSelect.appendChild(buildOption(s, statLabel(s)));
     });
@@ -56,7 +56,7 @@
 
     var setInput = document.createElement("input");
     setInput.type = "text";
-    setInput.placeholder = "Название сета";
+    setInput.placeholder = "Sonata Effect name";
     setInput.value = echo.set;
     setInput.addEventListener("input", function () {
       echo.set = setInput.value;
@@ -67,7 +67,7 @@
     echo.substats.forEach(function (sub, subIndex) {
       var row = document.createElement("div");
       var statSelect = document.createElement("select");
-      statSelect.appendChild(buildOption("", "Саб-стат…"));
+      statSelect.appendChild(buildOption("", "Substat…"));
       ALL_SUBSTATS.forEach(function (s) { statSelect.appendChild(buildOption(s, statLabel(s))); });
       statSelect.value = sub.stat;
       statSelect.addEventListener("change", function () {
@@ -105,15 +105,15 @@
     var overall = document.createElement("div");
     overall.className = "overall-score";
     overall.innerHTML = "<div class=\"overall-score__number\">" + scoreResult.overall +
-      "</div><div class=\"overall-score__rank\">Ранг: " + scoreResult.rank +
-      (scoreResult.setMatches ? " · сет верный" : " · сет не совпадает с рекомендацией") + "</div>";
+      "</div><div class=\"overall-score__rank\">Rank: " + scoreResult.rank +
+      (scoreResult.setMatches ? " · Sonata Effect matches" : " · Sonata Effect doesn't match the recommendation") + "</div>";
     container.appendChild(overall);
 
     scoreResult.echoScores.forEach(function (echoResult, index) {
       var row = document.createElement("div");
       row.className = "result-row";
       var label = document.createElement("span");
-      label.textContent = "Эхо " + (index + 1);
+      label.textContent = "Echo " + (index + 1);
       var scoreEl = document.createElement("span");
       scoreEl.className = scoreClass(echoResult.score);
       scoreEl.textContent = echoResult.score + "%";
@@ -124,10 +124,10 @@
       detail.className = "detail-panel";
       detail.style.display = "none";
       var lines = [];
-      lines.push(echoResult.mainStatOk ? "✅ Гл.стат подходит" : "❌ Гл.стат не рекомендован для этого персонажа");
+      lines.push(echoResult.mainStatOk ? "✅ Main stat is a good pick" : "❌ Main stat isn't recommended for this character");
       echoResult.substatBreakdown.forEach(function (sub) {
         var mark = sub.ratio >= 0.9 ? "✅" : (sub.ratio >= 0.5 ? "⚠️" : "❌");
-        lines.push(mark + " " + statLabel(sub.stat) + ": " + sub.value + " (" + Math.round(sub.ratio * 100) + "% от макс. ролла)");
+        lines.push(mark + " " + statLabel(sub.stat) + ": " + sub.value + " (" + Math.round(sub.ratio * 100) + "% of max roll)");
       });
       detail.innerHTML = lines.join("<br>");
 
@@ -143,7 +143,7 @@
   function render(container, character, storageImpl) {
     container.innerHTML = "";
     if (!character) {
-      container.textContent = "Персонаж не найден.";
+      container.textContent = "Character not found.";
       return;
     }
 
@@ -151,19 +151,19 @@
     var build = saved || { echoes: SLOT_COSTS.map(emptyEcho) };
 
     var title = document.createElement("h2");
-    title.textContent = "Мой билд: " + character.name;
+    title.textContent = "My Build: " + character.name;
     container.appendChild(title);
 
     var form = document.createElement("div");
     build.echoes.forEach(function (echo, index) {
-      form.appendChild(renderEchoSlot(index, echo, function () { /* значения читаются на "Оценить" */ }));
+      form.appendChild(renderEchoSlot(index, echo, function () { /* values are read when "Evaluate" is clicked */ }));
     });
     container.appendChild(form);
 
     var resultsContainer = document.createElement("div");
 
     var evaluateBtn = document.createElement("button");
-    evaluateBtn.textContent = "Оценить";
+    evaluateBtn.textContent = "Evaluate";
     evaluateBtn.addEventListener("click", function () {
       resultsContainer.innerHTML = "";
       renderResults(resultsContainer, character, build);
@@ -171,7 +171,7 @@
     container.appendChild(evaluateBtn);
 
     var saveBtn = document.createElement("button");
-    saveBtn.textContent = "Сохранить билд";
+    saveBtn.textContent = "Save Build";
     saveBtn.addEventListener("click", function () {
       global.STORAGE.saveBuild(storageImpl, character.id, build);
     });

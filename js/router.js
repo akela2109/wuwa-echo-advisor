@@ -1,4 +1,4 @@
-// Hash-роутинг: парсинг + подписка на hashchange. parseHash — чистая функция.
+// Hash routing: parsing + hashchange subscription. parseHash is a pure function.
 (function (global) {
   "use strict";
 

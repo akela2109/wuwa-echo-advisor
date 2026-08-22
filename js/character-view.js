@@ -1,13 +1,13 @@
-// Экран #character/:id: рекомендации по персонажу + ссылка на источник.
+// #character/:id screen: character recommendations + link to the source guide.
 (function (global) {
   "use strict";
 
   var STAT_LABELS = {
-    critRate: "Крит. шанс", critDmg: "Крит. урон", atkPct: "ATK%", atkFlat: "ATK (флэт)",
-    hpPct: "HP%", hpFlat: "HP (флэт)", defPct: "DEF%", energyRegen: "Восст. энергии",
-    basicAttackDmg: "Урон баз. атаки", heavyAttackDmg: "Урон тяж. атаки",
-    resonanceSkillDmg: "Урон навыка", resonanceLiberationDmg: "Урон резонанс-высвобождения",
-    elementalDmg: "Стихийный урон", healingBonus: "Бонус лечения"
+    critRate: "Crit Rate", critDmg: "Crit DMG", atkPct: "ATK%", atkFlat: "ATK (Flat)",
+    hpPct: "HP%", hpFlat: "HP (Flat)", defPct: "DEF%", energyRegen: "Energy Regen",
+    basicAttackDmg: "Basic Attack DMG Bonus", heavyAttackDmg: "Heavy Attack DMG Bonus",
+    resonanceSkillDmg: "Resonance Skill DMG Bonus", resonanceLiberationDmg: "Resonance Liberation DMG Bonus",
+    elementalDmg: "Elemental DMG Bonus", healingBonus: "Healing Bonus"
   };
 
   function statLabel(stat) { return STAT_LABELS[stat] || stat; }
@@ -15,7 +15,7 @@
   function render(container, character) {
     container.innerHTML = "";
     if (!character) {
-      container.textContent = "Персонаж не найден.";
+      container.textContent = "Character not found.";
       return;
     }
 
@@ -24,13 +24,13 @@
     container.appendChild(header);
 
     var priority = document.createElement("p");
-    priority.textContent = "Приоритет саб-статов: " + character.substatPriority.map(statLabel).join(" > ");
+    priority.textContent = "Substat priority: " + character.substatPriority.map(statLabel).join(" > ");
     container.appendChild(priority);
 
     var sets = document.createElement("p");
-    sets.textContent = "Рекомендуемый сет: " + character.recommendedSets.map(function (dist) {
+    sets.textContent = "Recommended Sonata Effect: " + character.recommendedSets.map(function (dist) {
       return Object.keys(dist).map(function (name) { return name + " (" + dist[name] + "pc)"; }).join(" + ");
-    }).join(" ИЛИ ");
+    }).join(" OR ");
     container.appendChild(sets);
 
     var summary = document.createElement("p");
@@ -41,11 +41,11 @@
     link.href = character.source;
     link.target = "_blank";
     link.rel = "noopener";
-    link.textContent = "Полный гайд на prydwen.gg";
+    link.textContent = "Full guide on prydwen.gg";
     container.appendChild(link);
 
     var buildBtn = document.createElement("button");
-    buildBtn.textContent = "Ввести мой билд →";
+    buildBtn.textContent = "Enter My Build →";
     buildBtn.addEventListener("click", function () {
       global.location.hash = "#build/" + character.id;
     });
