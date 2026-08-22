@@ -3,15 +3,22 @@
   "use strict";
 
   var SLOT_COSTS = [4, 3, 3, 1, 1];
+  var SUBSTAT_COUNT = 5; // an Echo can have up to 5 substats (wutheringwaves.fandom.com/wiki/Echo/Stats)
   var ALL_SUBSTATS = ["critRate", "critDmg", "atkPct", "atkFlat", "hpPct", "hpFlat",
-    "defPct", "energyRegen", "basicAttackDmg", "heavyAttackDmg", "resonanceSkillDmg", "resonanceLiberationDmg"];
+    "defPct", "defFlat", "energyRegen", "basicAttackDmg", "heavyAttackDmg", "resonanceSkillDmg", "resonanceLiberationDmg"];
+
+  function emptySubstats() {
+    var substats = [];
+    for (var i = 0; i < SUBSTAT_COUNT; i++) substats.push({ stat: "", value: 0 });
+    return substats;
+  }
 
   function emptyEcho(cost) {
     return {
       cost: cost,
       mainStat: "",
       set: "",
-      substats: [{ stat: "", value: 0 }, { stat: "", value: 0 }, { stat: "", value: 0 }, { stat: "", value: 0 }]
+      substats: emptySubstats()
     };
   }
 
@@ -54,15 +61,17 @@
     });
     body.appendChild(mainStatSelect);
 
-    var setInput = document.createElement("input");
-    setInput.type = "text";
-    setInput.placeholder = "Sonata Effect name";
-    setInput.value = echo.set;
-    setInput.addEventListener("input", function () {
-      echo.set = setInput.value;
+    var setSelect = document.createElement("select");
+    setSelect.appendChild(buildOption("", "Sonata Effect…"));
+    (global.WUWA_CONSTANTS.SONATA_EFFECTS || []).forEach(function (s) {
+      setSelect.appendChild(buildOption(s, s));
+    });
+    setSelect.value = echo.set;
+    setSelect.addEventListener("change", function () {
+      echo.set = setSelect.value;
       onChange();
     });
-    body.appendChild(setInput);
+    body.appendChild(setSelect);
 
     echo.substats.forEach(function (sub, subIndex) {
       var row = document.createElement("div");

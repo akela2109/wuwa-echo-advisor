@@ -4,7 +4,7 @@
 
   var STAT_LABELS = {
     critRate: "Crit Rate", critDmg: "Crit DMG", atkPct: "ATK%", atkFlat: "ATK (Flat)",
-    hpPct: "HP%", hpFlat: "HP (Flat)", defPct: "DEF%", energyRegen: "Energy Regen",
+    hpPct: "HP%", hpFlat: "HP (Flat)", defPct: "DEF%", defFlat: "DEF (Flat)", energyRegen: "Energy Regen",
     basicAttackDmg: "Basic Attack DMG Bonus", heavyAttackDmg: "Heavy Attack DMG Bonus",
     resonanceSkillDmg: "Resonance Skill DMG Bonus", resonanceLiberationDmg: "Resonance Liberation DMG Bonus",
     elementalDmg: "Elemental DMG Bonus", healingBonus: "Healing Bonus"
